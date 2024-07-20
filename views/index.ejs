@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Social Media Platform</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+  <h1>Welcome to Social Media Platform</h1>
+  <% if (user) { %>
+    <p>Hello, <%= user.username %>! <a href="/logout">Logout</a></p>
+    <form action="/post" method="POST" enctype="multipart/form-data">
+      <textarea name="content" placeholder="Write something..."></textarea>
+      <input type="file" name="image">
+      <button type="submit">Post</button>
+    </form>
+    <div>
+      <h2>Posts</h2>
+      <% posts.forEach(post=> { %>
+        <div>
+          <p>
+            <%= post.user.username %>: <%= post.content %>
+          </p>
+          <% if (post.image) { %>
+            <img src="/uploads/<%= post.image %>" alt="Post image">
+            <% } %>
+              <form action="/like/<%= post._id %>" method="POST">
+                <button type="submit">Like</button>
+              </form>
+        </div>
+        <% }); %>
+    </div>
+    <% } else { %>
+      <p><a href="/login">Login</a> or <a href="/register">Register</a></p>
+      <% } %>
+</body>
+
+</html>

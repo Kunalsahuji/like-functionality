@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>New Post</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <h1>Create a New Post</h1>
+    <form action="/post" method="POST" enctype="multipart/form-data">
+        <textarea name="content" placeholder="Write something..." required></textarea>
+        <input type="file" name="image" required>
+        <button type="submit">Post</button>
+    </form>
+    <p><a href="/">Go Back to Home</a></p>
+</body>
+
+</html>
